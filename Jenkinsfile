@@ -29,7 +29,7 @@ pipeline {
 		}
 		stage('Testing the app and model'){
 			steps {
-				sh 'python run App.py &'
+				sh 'python App.py &'
 				sh 'python test.py'
 				sh 'pkill python run App.py'
 			}
