@@ -26,12 +26,7 @@ pipeline {
 		}
 		stage('Building the app on docker'){
 			steps {
-				sh '''
-				#!/usr/bin/env bash
-				source ~/opt/anaconda3/etc/profile.d/conda.sh
-				conda activate datascience
-				python model_build.py ~/fashion-mnist-train-1.csv
-				'''
+				sh 'docker build -t flask-app-python .'
 			}
 		}
 	}
