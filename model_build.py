@@ -10,7 +10,7 @@ model = keras.Sequential([keras.layers.Flatten(input_shape=(28,28)),
 model.compile(loss='binary_crossentropy', optimizer="adam", metrics=['accuracy'])
 print(model.summary())
 #import train dataset
-df = pd.read_csv(sys.argv[0], on_bad_lines=False)
+df = pd.read_csv(sys.argv[0], on_bad_lines='skip')
 df[df.columns[1:]] = df[df.columns[1:]] / 255 # normalization
 X = df[df.columns[1:]].values.reshape((14999, 28,28))
 Y = keras.utils.to_categorical(df["label"].values)
