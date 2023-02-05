@@ -1,6 +1,7 @@
 from tensorflow import keras
 import pandas as pd
 from keras.callbacks import EarlyStopping
+import sys
 
 #create the model
 model = keras.Sequential([keras.layers.Flatten(input_shape=(28,28)),
@@ -9,7 +10,7 @@ model = keras.Sequential([keras.layers.Flatten(input_shape=(28,28)),
 model.compile(loss='binary_crossentropy', optimizer="adam", metrics=['accuracy'])
 print(model.summary())
 #import train dataset
-df = pd.read_csv("fashion-mnist-train-1.csv")
+df = pd.read_csv("~/fashion-mnist-train-1.csv")
 df[df.columns[1:]] = df[df.columns[1:]] / 255 # normalization
 X = df[df.columns[1:]].values.reshape((14999, 28,28))
 Y = keras.utils.to_categorical(df["label"].values)
