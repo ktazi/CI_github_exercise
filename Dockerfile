@@ -14,7 +14,7 @@ COPY . .
 ENV FLASK_APP=App.py
 
 RUN python3 -m flask run --host=0.0.0.0 &
-RUN python test.py
+RUN python3 test.py
 RUN pkill python3 -m flask run --host=0.0.0.0
 
 EXPOSE 5000
