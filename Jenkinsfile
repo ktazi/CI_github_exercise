@@ -6,8 +6,12 @@ pipeline {
    	stages {
 		stage('Building the model'){
 			steps {
-        			sh 'conda activate datascience'
-				sh 'python model_build.py'
+				sh '''
+				#!/usr/bin/env bash
+				source ~/opt/anaconda3/etc/profile.d/conda.sh
+				conda activate datascience
+				python model_build.py
+				'''
 			}
 		}
 	}
