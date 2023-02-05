@@ -29,9 +29,9 @@ pipeline {
 		}
 		stage('Testing the app and model'){
 			steps {
-				sh 'python App.py &'
+				sh 'python app.py &'
 				sh 'python test.py'
-				sh 'pkill python run App.py'
+				sh 'pkill python run app.py'
 			}
 		}
 		stage('Deploying and merging staging branch'){
