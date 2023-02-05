@@ -1,8 +1,5 @@
 pipeline {
 	agent any
-	environment {     
-    		DOCKERHUB_CREDENTIALS = credentials('dockerhubcred')     
-    	}
    	stages {
 		stage('Creating staging branch') {
 			steps {
