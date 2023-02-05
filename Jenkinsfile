@@ -34,9 +34,6 @@ pipeline {
 			steps {
 				sh 'docker run -p 5000:5000 flask-app-python &'
 				sh 'python test.py'
-				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    			sh "docker stop $(docker ps -q)"
-                		}
 			}
 		}
 	}
