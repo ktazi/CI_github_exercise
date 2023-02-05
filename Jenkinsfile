@@ -30,5 +30,12 @@ pipeline {
 				sh 'docker build -t flask-app-python .'
 			}
 		}
+		stage('Testing the app and model'){
+			steps {
+				sh 'docker run -p 5000:5000 flask-app-python &'
+				sh 'python test.py'
+				sh 'docker stop $(docker ps -q)'
+			}
+		}
 	}
 }
