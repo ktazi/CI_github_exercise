@@ -3,7 +3,7 @@ FROM ubuntu
 
 RUN apt -qq -y update \
 	&& apt -qq -y upgrade
-RUN apt -y install python3.7
+RUN apt -y install python3
 RUN apt -y install python3-pip
 
 RUN which python3.7
