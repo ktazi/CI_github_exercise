@@ -6,14 +6,6 @@ RUN apt -qq -y update \
 RUN apt -y install python3
 RUN apt -y install python3-pip
 
-RUN which python3.7
-RUN which pip3
-
-RUN ln -s /usr/bin/python3.7 /usr/bin/python
-RUN ln -s /usr/bin/pip3 /usr/bin/pip
-RUN python --version
-RUN which pip
-
 WORKDIR /usr/src/app
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
