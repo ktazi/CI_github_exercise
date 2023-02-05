@@ -6,9 +6,9 @@ pipeline {
    	stages {
 		stage('Building the model'){
 			steps {
+				sh 'conda init bash'
         			sh 'conda activate datascience'
 				sh 'python model_build.py'
-				sh 'conda init bash'
 			}
 		}
 	}
