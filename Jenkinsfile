@@ -29,7 +29,7 @@ pipeline {
 		}
 		stage('Testing the app and model'){
 			steps {
-				sh 'python app.py &'
+				sh 'python3 -m flask run --host=0.0.0.0 &'
 				sh 'python test.py'
 				sh 'pkill python run app.py'
 			}
