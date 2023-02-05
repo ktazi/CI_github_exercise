@@ -29,8 +29,20 @@ pipeline {
 		}
 		stage('Testing the app and model'){
 			steps {
-				sh 'docker run -p 5000:5000 flask-app-python &'
+				sh 'python run App.py &'
 				sh 'python test.py'
+				sh 'pkill python run App.py'
+			}
+		}
+		stage('Deploying and merging staging branch'){
+			steps {
+				sh 'docker run -p 5000:5000 flask-app-python &'
+				echo 'Merging to the git master'
+				sh 'git checkout master'
+				sh 'git pull'
+				sh 'git merge staging -m "incorporating build"'
+				echo 'Deleting the staging branch'
+				sh 'git branch -d staging'
 			}
 		}
 	}
